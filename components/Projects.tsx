@@ -1,18 +1,23 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
-import {
-  ArrowUpRight,
-  Leaf,
-  GraduationCap,
-  Car,
-  Building2,
-} from "lucide-react";
+import { ArrowUpRight, Leaf, GraduationCap, Car, Trophy, FileSearch } from "lucide-react";
 import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
 
+const BharatOSIcon = () => (
+  <Image
+    src="/images/bharatos-logo.svg"
+    alt="BHARAT OS Logo"
+    width={32}
+    height={32}
+    className="h-8 w-8 object-contain"
+  />
+);
+
 interface Project {
-  icon: typeof Leaf;
+  icon: any;
   name: string;
   tagline: string;
   description: string;
@@ -37,44 +42,27 @@ const PROJECTS: Project[] = [
       "Market Insights",
       "Government Schemes",
     ],
-    stack: [
-      "Next.js",
-      "FastAPI",
-      "Gemini",
-      "Supabase",
-      "TypeScript",
-      "Voice AI",
-    ],
+    stack: ["Next.js", "FastAPI", "Gemini", "Supabase", "TypeScript", "Voice AI"],
     accent: "from-[#2563EB] to-[#16A34A]",
     demoUrl: "https://krishiva.vercel.app/dashboard/farmer",
   },
-
   {
-    icon: Building2,
+    icon: Trophy,
     name: "ARENAOS AI",
-    tagline: "Intelligent Stadium Operations Platform",
+    tagline: "Smart Stadium AI Operating System",
     description:
-      "Built an AI-powered stadium operations platform featuring an interactive Digital Twin, multi-agent orchestration, real-time telemetry simulation, Gemini-powered spectator assistance, and intelligent operational dashboards for large-scale sports venues.",
+      "An intelligent multi-agent AI command platform designed for crowd management, real-time security coordination, indoor stadium routing, and operational optimization at mega sporting events.",
     features: [
-      "Digital Twin",
+      "Crowd Management",
+      "Security Coordination",
+      "Indoor Stadium Routing",
       "Multi-Agent AI",
-      "Real-Time Telemetry",
-      "Spectator Assistance",
-      "Event Simulation",
-      "Operations Dashboard",
+      "Operations Optimization",
     ],
-    stack: [
-      "Next.js",
-      "FastAPI",
-      "Gemini",
-      "Supabase",
-      "TypeScript",
-      "Digital Twin",
-    ],
-    accent: "from-cyan-500 to-blue-700",
+    stack: ["Next.js", "FastAPI", "Gemini", "Supabase", "TypeScript", "Google ADK"],
+    accent: "from-[#2563EB] to-[#8B5CF6]",
     demoUrl: "https://arenaos-ai-2005.vercel.app/",
   },
-
   {
     icon: Car,
     name: "CABZII",
@@ -88,17 +76,10 @@ const PROJECTS: Project[] = [
       "Booking Management",
       "Modern UX",
     ],
-    stack: [
-      "Next.js",
-      "TypeScript",
-      "PostgreSQL",
-      "Maps API",
-      "Razorpay",
-    ],
+    stack: ["Next.js", "TypeScript", "PostgreSQL", "Maps API", "Razorpay"],
     accent: "from-[#1D4ED8] to-[#0F172A]",
     demoUrl: "https://cabzii.com",
   },
-
   {
     icon: GraduationCap,
     name: "EDUEARN",
@@ -112,100 +93,149 @@ const PROJECTS: Project[] = [
       "Certificates",
       "Intelligent Recommendations",
     ],
-    stack: [
-      "React",
-      "Next.js",
-      "FastAPI",
-      "Gemini",
-      "PostgreSQL",
-    ],
+    stack: ["React", "Next.js", "FastAPI", "Gemini", "PostgreSQL"],
     accent: "from-[#2563EB] to-[#60A5FA]",
-    demoUrl:
-      "https://eduearn-8mx2i5gbo-eduearnofficial-2394s-projects.vercel.app",
+    demoUrl: "https://eduearn-six.vercel.app",
+  },
+  {
+    icon: BharatOSIcon,
+    name: "BHARAT OS",
+    tagline: "AI-Powered Smart Governance",
+    description:
+      "AI-powered disaster governance operating platform that unifies real-time IoT telemetry, citizen reports, open data, GIS digital twins, and historical datasets into a single command environment. Its multi-agent AI analyzes incidents and coordinates recommendations across weather, traffic, emergency, and infrastructure domains, while critical actions remain under authorized human approval.",
+    features: [
+      "REAL-TIME IOT TELEMETRY",
+      "CITIZEN REPORTS",
+      "GIS DIGITAL TWIN",
+      "MULTI-AGENT AI",
+      "INCIDENT ANALYSIS",
+      "HUMAN APPROVAL",
+    ],
+    stack: ["AI", "IoT", "FastAPI", "Next.js", "Supabase", "Digital Twin"],
+    accent: "from-[#FF9933] via-[#1E90FF] to-[#128807]",
+    demoUrl: "https://bharatos-beta.vercel.app/",
+  },
+  {
+    icon: FileSearch,
+    name: "SPECRA",
+    tagline: "AI Industrial Product Intelligence & Verification",
+    description:
+      "An AI-powered industrial product intelligence and verification platform that processes technical PDFs, datasheets, manuals, catalogs, and vendor documents, extracts structured product specifications, validates them against source evidence, detects conflicts between documents, and provides a human verification workspace for reliable product information.",
+    features: [
+      "DOCUMENT INTELLIGENCE",
+      "SPECIFICATION EXTRACTION",
+      "SOURCE EVIDENCE",
+      "CONFLICT DETECTION",
+      "PRODUCT VERIFICATION",
+      "HUMAN-IN-THE-LOOP",
+    ],
+    stack: ["AI", "Python", "FastAPI", "Document AI", "LLM"],
+    accent: "from-[#6366F1] to-[#8B5CF6]",
+    demoUrl: "https://specra-wheat.vercel.app/",
   },
 ];
 
 export default function Projects() {
   return (
-    <section
-      id="projects"
-      className="mx-auto max-w-7xl px-6 py-24 sm:px-8 lg:px-12"
-    >
-      <SectionHeading
-        eyebrow="PROJECTS"
-        title="Selected Work"
-        description="A mix of AI products, platform experiences, and intelligent operations systems designed for real-world impact."
-      />
+    <section id="projects" className="relative py-24 sm:py-32 bg-white">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+        <SectionHeading
+          eyebrow="Featured Projects"
+          title="Products, not prototypes."
+          description="A selection of platforms I've built end to end — from AI core to shipped UI."
+        />
 
-      <div className="mt-12 grid gap-6 lg:grid-cols-2">
-        {PROJECTS.map((project, index) => {
-          const Icon = project.icon;
-
-          return (
-            <Reveal key={project.name} delay={index * 0.08}>
-              <motion.article
-                whileHover={{ y: -6, scale: 1.01 }}
-                className="group relative overflow-hidden rounded-3xl border border-white/10 bg-slate-950/60 p-8 shadow-[0_20px_80px_rgba(2,6,23,0.45)]"
+        <div className="mt-14 space-y-6">
+          {PROJECTS.map((p, i) => (
+            <Reveal key={p.name} delay={i * 0.08}>
+              <motion.div
+                whileHover={{ y: -6 }}
+                transition={{ type: "spring", stiffness: 250, damping: 22 }}
+                className="group relative card-surface rounded-lg2 shadow-premium hover:shadow-hover transition-shadow overflow-hidden"
               >
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${project.accent} opacity-10 transition-opacity group-hover:opacity-20`}
-                />
-                <div className="relative">
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex items-center gap-3">
-                      <div
-                        className={`flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${project.accent} text-white shadow-lg`}
-                      >
-                        <Icon className="h-5 w-5" />
-                      </div>
-                      <div>
-                        <h3 className="text-xl font-semibold text-white">
-                          {project.name}
-                        </h3>
-                        <p className="text-sm text-sky-300/90">
-                          {project.tagline}
-                        </p>
-                      </div>
+                <div className={`h-1.5 w-full bg-gradient-to-r ${p.accent}`} />
+                <div className="p-8 sm:p-10 grid md:grid-cols-[auto_1fr] gap-8">
+                  <div className="flex md:flex-col items-center md:items-start gap-4 md:gap-0">
+                    <div
+                      className={`inline-flex items-center justify-center h-14 w-14 rounded-2xl bg-gradient-to-br ${p.accent} text-white shadow-premium shrink-0`}
+                    >
+                      <p.icon size={24} />
+                    </div>
+                    <div className="md:mt-4">
+                      <h3 className="font-display font-bold text-2xl text-navy tracking-tight">
+                        {p.name}
+                      </h3>
+                      <p className="text-sm text-blue-primary font-medium mt-1">{p.tagline}</p>
+                    </div>
+                  </div>
+
+                  <div>
+                    <p className="text-text-secondary leading-relaxed max-w-2xl">
+                      {p.description}
+                    </p>
+
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      {p.features.map((f) => (
+                        <span
+                          key={f}
+                          className="text-xs font-medium text-navy bg-bg border border-border rounded-full px-3 py-1.5 uppercase tracking-wide"
+                        >
+                          {f}
+                        </span>
+                      ))}
                     </div>
 
-                    <a
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-sm text-slate-300 transition hover:bg-white/10"
-                    >
-                      Demo
-                      <ArrowUpRight className="h-4 w-4" />
-                    </a>
-                  </div>
+                    <div className="mt-5 flex flex-wrap items-center gap-2">
+                      {p.stack.map((s) => (
+                        <span
+                          key={s}
+                          className="text-xs font-mono font-medium text-blue-primary bg-blue-50/60 rounded-md px-2.5 py-1"
+                        >
+                          {s.startsWith("#") ? s : `#${s}`}
+                        </span>
+                      ))}
+                    </div>
 
-                  <p className="mt-6 text-sm leading-7 text-slate-300">
-                    {project.description}
-                  </p>
-
-                  <ul className="mt-6 flex flex-wrap gap-2">
-                    {project.features.map((feature) => (
-                      <li
-                        key={feature}
-                        className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.2em] text-slate-300"
+                    <div className="mt-6 flex flex-wrap items-center gap-5">
+                      <a
+                        href={p.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Live Demo for ${p.name}`}
+                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-navy group-hover:text-blue-primary transition-colors"
                       >
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="mt-6 flex flex-wrap gap-2">
-                    {project.stack.map((item) => (
-                      <span key={item} className="text-sm text-slate-400">
-                        #{item}
-                      </span>
-                    ))}
+                        Live Demo
+                        <ArrowUpRight
+                          size={16}
+                          className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                        />
+                      </a>
+                      {p.githubUrl ? (
+                        <a
+                          href={p.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`GitHub Repository for ${p.name}`}
+                          className="inline-flex items-center gap-1.5 text-sm font-semibold text-text-muted hover:text-blue-primary transition-colors"
+                        >
+                          GitHub
+                          <ArrowUpRight
+                            size={16}
+                            className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                          />
+                        </a>
+                      ) : (
+                        <span className="text-xs font-medium text-text-muted cursor-default" aria-label="Repository available on request">
+                          Repository available on request
+                        </span>
+                      )}
+                    </div>
                   </div>
                 </div>
-              </motion.article>
+              </motion.div>
             </Reveal>
-          );
-        })}
+          ))}
+        </div>
       </div>
     </section>
   );
